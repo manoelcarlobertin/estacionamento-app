@@ -1,16 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<%= render 'shared/alerts' %>
 
 <% content_for :title, "Vagas" %>
 
-<h1>Vagas</h1>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Vagas</h1>
+    <%= link_to "Nova Vaga" , new_vaga_path, class: "btn btn-primary" %>
+  </div>
 
-<div id="vagas">
-  <% @vagas.each do |vaga| %>
-    <%= render vaga %>
-    <p>
-      <%= link_to "Show this vaga", vaga %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New vaga", new_vaga_path %>
+<%= render 'vagas/table' , vagas: @vagas %>

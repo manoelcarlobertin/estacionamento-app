@@ -22,10 +22,10 @@
             <%= veiculo.modelo %>
           </td>
           <td>
-            <%= veiculo.cliente.nome if veiculo.cliente %>
+            <%= veiculo.cliente&.nome %>
           </td>
           <td class="text-center">
-            <%= render 'shared/action_buttons' , resource: veiculo, edit_path: edit_veiculo_path(veiculo), delete_path:
+            <%= render 'shared/action_buttons' , edit_path: edit_veiculo_path(veiculo), delete_path:
               veiculo_path(veiculo) %>
           </td>
         </tr>
