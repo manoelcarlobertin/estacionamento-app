@@ -1,16 +1,17 @@
 class VeiculosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_veiculo, only: %i[edit update destroy]
-  after_action  :verify_authorized
+  # after_action  :verify_authorized
 
   def index
-    @veiculos = policy_scope(Veiculo)
-    authorize Veiculo
+    @veiculos = Veiculo.all
+    # @veiculos = policy_scope(Veiculo)
+    # authorize Veiculo
   end
 
   def new
     @veiculo = Veiculo.new
-    authorize @veiculo
+    # authorize @veiculo
   end
 
   # GET /veiculos/1 or /veiculos/1.json

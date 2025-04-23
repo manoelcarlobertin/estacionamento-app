@@ -1,28 +1,13 @@
 <h1>Dashboard</h1>
-<%#= render 'shared/alerts' %>
-  <%#= render 'shared/dashboard_cards' , user: current_user.email, livres: @livres, ocupadas: @ocupadas, total: @veiculos
-    %>
+<%= render 'shared/alerts' %>
 <ul class="list-group list-group-flush mb-4">
   <li class="list-group-item">
-    <strong>Logado:</strong>
+    <strong>[Logado]</strong>
     <% if user_signed_in? %>
-      <%= current_user.email %>
+      <%= render 'shared/dashboard_cards' , user: current_user.email, livres: @livres, ocupadas: @ocupadas, total: @veiculos
+        %>
     <% else %>
-      <span class="text-danger">Não logado</span>
+      <span class="text-danger">[Não logado]</span>
     <% end %>
-  </li>
-  <li class="list-group-item">
-    <strong>Vagas Livres:</strong> <span class="text-success">
-      <%= @livres %>
-    </span>
-  </li>
-  <li class="list-group-item">
-    <strong>Vagas Ocupadas:</strong> <span class="text-danger">
-      <%= @ocupadas %>
-    </span>
-  </li>
-  <li class="list-group-item">
-    <strong>Total Veículos:</strong>
-    <%= @veiculos %>
   </li>
 </ul>

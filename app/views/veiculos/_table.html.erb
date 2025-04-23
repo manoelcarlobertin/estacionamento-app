@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Cliente</th>
+        <th class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% veiculos.each do |veiculo| %>
+        <tr>
+          <td>
+            <%= veiculo.id %>
+          </td>
+          <td>
+            <%= veiculo.placa %>
+          </td>
+          <td>
+            <%= veiculo.modelo %>
+          </td>
+          <td>
+            <%= veiculo.cliente.nome if veiculo.cliente %>
+          </td>
+          <td class="text-center">
+            <%= render 'shared/action_buttons' , resource: veiculo, edit_path: edit_veiculo_path(veiculo), delete_path:
+              veiculo_path(veiculo) %>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

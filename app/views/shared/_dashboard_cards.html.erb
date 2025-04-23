@@ -1,0 +1,38 @@
+<div class="row">
+  <%# Usuário logado %>
+    <div class="col-md-3">
+      <div class="card text-bg-primary mb-3">
+        <div class="card-header">Usuário</div>
+        <div class="card-body">
+          <%= user %>
+        </div>
+      </div>
+    </div>
+    <%# Vagas livres %>
+      <div class="col-md-3">
+        <div class="card text-bg-success mb-3">
+          <div class="card-header">Vagas Livres</div>
+          <div class="card-body">
+            <%= livres %>
+          </div>
+        </div>
+      </div>
+      <%# Vagas ocupadas %>
+        <div class="col-md-3">
+          <div class="card text-bg-danger mb-3">
+            <div class="card-header">Vagas Ocupadas</div>
+            <div class="card-body">
+              <%= ocupadas %>
+            </div>
+          </div>
+        </div>
+        <%# Total veículos %>
+          <div class="col-md-3">
+            <div class="card text-bg-secondary mb-3">
+              <div class="card-header">Total Veículos</div>
+              <div class="card-body">
+                <%= total %>
+              </div>
+            </div>
+          </div>
+</div>
