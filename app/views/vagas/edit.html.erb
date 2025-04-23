@@ -1,0 +1,12 @@
+<% content_for :title, "Editing vaga" %>
+
+<h1>Editing vaga</h1>
+
+<%= render "form", vaga: @vaga %>
+
+<br>
+
+<div>
+  <%= link_to "Show this vaga", @vaga %> |
+  <%= link_to "Back to vagas", vagas_path %>
+</div>

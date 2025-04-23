@@ -1,0 +1,2 @@
+class VeiculoPolicy < ApplicationPolicy
+end

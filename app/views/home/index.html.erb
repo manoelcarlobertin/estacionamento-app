@@ -1,0 +1,26 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<ul class="list-group list-group-flush mb-4">
+  <li class="list-group-item">
+    <strong>Logado:</strong>
+    <% if user_signed_in? %>
+      <%= current_user.email %>
+    <% else %>
+      <span class="text-danger">Não logado</span>
+    <% end %>
+  </li>
+  <li class="list-group-item">
+    <strong>Vagas Livres:</strong> <span class="text-success">
+      <%= @livres %>
+    </span>
+  </li>
+  <li class="list-group-item">
+    <strong>Vagas Ocupadas:</strong> <span class="text-danger">
+      <%= @ocupadas %>
+    </span>
+  </li>
+  <li class="list-group-item">
+    <strong>Total Veículos:</strong>
+    <%= @tot_veiculos %>
+  </li>
+</ul>

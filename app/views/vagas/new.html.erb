@@ -1,0 +1,11 @@
+<% content_for :title, "New vaga" %>
+
+<h1>New vaga</h1>
+
+<%= render "form", vaga: @vaga %>
+
+<br>
+
+<div>
+  <%= link_to "Back to vagas", vagas_path %>
+</div>
