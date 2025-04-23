@@ -1,5 +1,7 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Dashboard</h1>
+<%#= render 'shared/alerts' %>
+  <%#= render 'shared/dashboard_cards' , user: current_user.email, livres: @livres, ocupadas: @ocupadas, total: @veiculos
+    %>
 <ul class="list-group list-group-flush mb-4">
   <li class="list-group-item">
     <strong>Logado:</strong>
@@ -21,6 +23,6 @@
   </li>
   <li class="list-group-item">
     <strong>Total Veículos:</strong>
-    <%= @tot_veiculos %>
+    <%= @veiculos %>
   </li>
 </ul>
