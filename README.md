@@ -1,24 +1,63 @@
-# README
+🧁 Visão Geral do Projeto: Sistema de Gestão de Estacionamento
+✅ Funcionalidades
+Autenticação e Autorização:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Login e logout (com Devise)
 
-Things you may want to cover:
+Controle de acessos e permissões (com Pundit)
 
-* Ruby version
+Cadastros:
 
-* System dependencies
+Clientes
 
-* Configuration
+Veículos
 
-* Database creation
+Vagas
 
-* Database initialization
+Entradas e saídas de veículos
 
-* How to run the test suite
+Dashboard de Vagas:
 
-* Services (job queues, cache servers, search engines, etc.)
+Exibir vagas livres e ocupadas em tempo real
 
-* Deployment instructions
+Design:
 
-* ...
+Layout bonito com Bootstrap
+
+Navbar, footer, páginas organizadas
+
+Extras:
+
+Uso de simple_form, faker para seeds
+
+Código com partials para reaproveitamento
+
+🎥 VÍDEOS RECOMENDADOS
+Curso de Rails da Invenio Tech (Daniel Moreira)
+
+Autenticação com Devise – Diego Fernandes (Rocketseat)
+
+Agora o projeto conta com:
+
+Políticas Pundit completas
+
+Dashboard dinâmico no Home
+
+Alerts compartilhados
+
+Botões com ícones
+
+Partials reaproveitáveis
+
+Fluxo Operacional
+Registrar Entrada
+
+Operador digita placa + seleciona vaga livre.
+
+Movimento.create dispara after_create, marcando vaga como ocupada e gravando entrada: Time.current.
+
+Registrar Saída
+
+Em outra view (ou index de movimentos), o operador escolhe um Movimento sem saida e adiciona a hora de saída.
+
+after_update libera a vaga (status: true).
