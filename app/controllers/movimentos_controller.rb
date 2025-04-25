@@ -23,7 +23,7 @@ class MovimentosController < ApplicationController
   def edit;end
 
   def create
-    @movimento = Movimento.new(movimento_params)
+    @movimento = Movimento.new(movimento_params.merge(entrada: Time.current))
 
     respond_to do |format|
       if @movimento.save
@@ -54,7 +54,8 @@ class MovimentosController < ApplicationController
     @movimento.destroy!
 
     respond_to do |format|
-      format.html { redirect_to movimentos_path, status: :see_other, notice: "Movimento was successfully destroyed." }
+      format.html { redirect_to movimentos_path, status: :see_other,
+                    notice: "Movimento was successfully destroyed." }
       format.json { head :no_content }
     end
   end
