@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :clientes
-  resources :veiculos
+
+  resources :veiculos do
+    collection { get :search_by_plate }
+  end
+
   resources :vagas
   resources :movimentos, only: [ :new, :create, :index ]
 end

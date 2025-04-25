@@ -61,13 +61,17 @@ class VeiculosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_veiculo
-      @veiculo = Veiculo.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def veiculo_params
-      params.expect(veiculo: [ :placa, :modelo, :cliente_id ])
-    end
+  def search_by_plate
+    @veiculos = Veiculo.where("placa ILIKE ?", "%#{params[:q]}%").limit(5)
+    render json: @veiculos.pluck(:placa, :id)
+  end
+
+  def set_veiculo
+    @veiculo = Veiculo.find(params.expect(:id))
+  end
+
+  def veiculo_params
+    params.expect(veiculo: [ :placa, :modelo, :cliente_id ])
+  end
 end

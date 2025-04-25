@@ -1,25 +1,27 @@
 class MovimentosController < ApplicationController
   before_action :set_movimento, only: %i[ show edit update destroy ]
 
-  # GET /movimentos or /movimentos.json
   def index
-    @movimentos = Movimento.all
+    # se tiver params[:inicio] e params[:fim], filtra, senão lista todos
+    if params[:inicio].present? && params[:fim].present?
+      # Filtro de Movimentações por Data/Hora
+      @movimentos = Movimento.entre_datas(
+        Date.parse(params[:inicio]),
+        Date.parse(params[:fim])
+      )
+    else
+      @movimentos = Movimento.all
+    end
   end
 
-  # GET /movimentos/1 or /movimentos/1.json
-  def show
-  end
+  def show;end
 
-  # GET /movimentos/new
   def new
     @movimento = Movimento.new
   end
 
-  # GET /movimentos/1/edit
-  def edit
-  end
+  def edit;end
 
-  # POST /movimentos or /movimentos.json
   def create
     @movimento = Movimento.new(movimento_params)
 

@@ -1,16 +1,30 @@
-
 <%= simple_form_for(@movimento) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :entrada %>
-    <%= f.input :saida %>
-    <%= f.association :veiculo %>
-    <%= f.association :vaga %>
+  <div class="mb-3" data-controller="autocomplete">
+    <%= f.label :placa, "Placa do Veículo" %>
+    <%= text_field_tag :placa, nil,
+          list: "placas" , data: { controller: "autocomplete" , autocomplete_target: "input" },
+          class: "form-control" %>
+        <datalist id="placas" data-autocomplete-target="list"></datalist>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.hidden_field :veiculo_id, id: "veiculo_id_field" %>
+  <%= f.input :vaga_id, as: :select, collection: Vaga.where(status: true).pluck(:numero, :id),
+                                                                          include_blank: false %>
+  <%= f.button :submit, "Registrar Entrada" , class: "btn btn-success" %>
 <% end %>
+
+<script>
+  // Ao escolher a placa no datalist, preenche o hidden veiculo_id
+  document.querySelector("[data-controller='autocomplete']").addEventListener("change", e => {
+    const option = Array.from(document.querySelectorAll("#placas option"))
+      .find(opt => opt.value === e.target.value)
+    if (option) document.getElementById("veiculo_id_field").value = option.dataset.id
+  })
+</script>
+<!-- O que acontece acima:
+
+  Você digita parte da placa → Stimulus faz fetch → popula <datalist>
+  → ao selecionar, captura o data-id e preenche veiculo_id.           -->

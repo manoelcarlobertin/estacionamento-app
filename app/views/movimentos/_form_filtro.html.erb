@@ -1,0 +1,13 @@
+<%= form_with url: movimentos_path, method: :get, local: true, class: "row g-2 mb-4" do |f| %>
+  <div class="col-auto">
+    <%= f.label :inicio, "Data Início", class: "form-label" %>
+    <%= f.date_field :inicio, value: params[:inicio], class: "form-control" %>
+  </div>
+  <div class="col-auto">
+    <%= f.label :fim, "Data Fim", class: "form-label" %>
+    <%= f.date_field :fim, value: params[:fim], class: "form-control" %>
+  </div>
+  <div class="col-auto align-self-end">
+    <%= f.submit "Filtrar", class: "btn btn-primary" %>
+  </div>
+<% end %>

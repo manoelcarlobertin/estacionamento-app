@@ -1,7 +1,8 @@
 class Vaga < ApplicationRecord
-  has_one :movimento
+  has_many :movimentos
 
-  def status_humano
-    status ? 'Livre' : 'Ocupada'
+  # Conveniência para saber se está livre
+  def livre?
+    status
   end
 end
